@@ -26,6 +26,6 @@ Exploring how AI can help identify errors in access-request tickets and guide us
 
 ## Upcoming Case Studies
 
-- AI Product Strategy
-- Market Research and Competitive Analysis
+- AI Product Strategy for Desi Travel Planner(application)
+- Market Research and Competitive Analysis (One Competitive product)
 - Product Roadmap and Feature Prioritization
