@@ -6,9 +6,9 @@
 
 Access requests are a routine part of managing applications within an organization. However, submitting a request with the correct permissions is not always straightforward.
 
-Consider a mid-sized company, ABC Corp, where employees use an internal application called XYZ. Access requests involve multiple configuration steps, and the available options in one step determine which options are permitted in the next.
+Consider a mid-sized company, ABC Corp, where employees use an internal application called XYZ. Access requests involve multiple steps, and the available options in each step determine which options are permitted in the next or sometimes you have multiple valid options available unclear of what to choose.
 
-Selecting an incompatible combination can result in ticket-processing errors. In other cases, a request may be processed successfully even though the selected permissions do not match the intended configuration.
+Selecting an incompatible combination can result in ticket-processing errors. In other cases, a request may be processed successfully even though the selected permissions do not match the intended request. It may also fail due to unknown reasons.
 
 I explored how AI could simplify this process by helping users understand what went wrong and how to correct their requests.
 
@@ -24,9 +24,7 @@ The request involves multiple configuration steps:
 - Step 2: Select the required access category or permission group.
 - Step 3: Select the functions associated with the chosen option.
 
-The available choices are interconnected. A selection in Step 2 determines which functions can be selected in Step 3.
-
-For example, selecting Permission Group A may allow Functions A, B, and C, whereas Permission Group B may allow only Functions A and C.
+The available choices are interconnected. Step 1 is mandatory in XYZ application, but we can raise the request without it and it will throw error. A selection in Step 2 determines which functions can be selected in Step 3.
 
 This creates a challenge for users who are unfamiliar with the available permission combinations.
 
@@ -38,7 +36,7 @@ Users may select a combination that is not permitted by the existing configurati
 
 **2. Incorrect but successfully processed requests**
 
-Some permission sets are technically valid and can be processed successfully. However, selecting a valid permission set does not necessarily mean the intended access configuration is correct.
+Some permission sets are technically valid and can be processed successfully. However, selecting a valid permission set does not necessarily mean the intended access is correct if chosen wrong options.
 
 **3. Difficulty understanding configuration errors**
 
@@ -46,7 +44,7 @@ Users may not know which selection caused the problem or what they should choose
 
 **4. Repeated investigation and corrections**
 
-Identifying the incorrect selection and understanding the available alternatives can require additional effort and communication.
+Identifying the incorrect selection and understanding the available alternatives can require additional effort and communication. Sometimes it may fail due to temporary integration issue as well.
 
 The underlying problem was not simply an error during ticket submission. It was the lack of clear, actionable guidance to help users understand and correct their access requests.
 
@@ -84,8 +82,8 @@ Before developing the agent, I focused on understanding how the process worked a
 
 My approach included:
 
-- Examining previously raised access-request tickets and understanding their configuration details.
-- Using my prior experience with the application to understand the different selection steps.
+- Examining previously raised access-request tickets and understanding their config details.
+- Using my experience with the application to understand the different selection steps possible.
 - Discussing the existing workflow and its challenges with the application product owner and business analyst.
 - Understanding the relationships between available permission groups and their corresponding functions.
 - Collaborating with a tester to validate the proposed solution against existing test scenarios.
@@ -257,7 +255,7 @@ The solution has certain limitations that need to be considered.
 - Its validation depends on the accuracy and completeness of the available CSV mapping.
 - The latest reference file must be downloaded manually when the online mapping changes.
 - AI-generated explanations may still require improvement and verification.
-- The current implementation validates configuration combinations rather than determining permissions based on an employee's business role.
+- The current implementation validates configuration combinations rather than determining permissions based on an employee's business role. This is a consideration for future enhancement.
 - The agent currently operates through GitHub Copilot Chat in Visual Studio Code rather than a dedicated chatbot interface.
 
 These limitations provide opportunities for further product development.
